@@ -94,7 +94,7 @@ public class Browscap4jFileReader {
 		try {
 			/*
 			 * Use comma as separator, quote as quotechar and skip the first
-			 * three lines fromcsvFile - browscap.csv.
+			 * three lines from csvFile - browscap.csv.
 			 */
 			final CSVReader csvReader = new CSVReaderBuilder(new FileReader(csvFile)).withSkipLines(3)
 					.withCSVParser(new CSVParserBuilder().withSeparator(',').withQuoteChar('\"').build()).build();
