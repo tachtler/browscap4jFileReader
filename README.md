@@ -156,3 +156,9 @@ The output of the parent code for the used User-Agent-String looks like this:
 A list of possible changes for the future:
 
 - Change some return values (Getter/Setter) inside the Browscap4jBean from String to Boolean.
+
+## Thanks to
+Thanks for the inspiration to me to realize this project:
+
+- [Browser Capabilities Project](http://browscap.org/)
+- [Ankush Sharma](https://github.com/ankushs92/Browscap4j)
