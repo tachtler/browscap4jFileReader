@@ -150,6 +150,6 @@ The output of the parent code for the used User-Agent-String looks like this:
 ```
 
 ## TODO:
-A list of possible changes fpr the future:
+A list of possible changes for the future:
 
 - Change some return values (Getter/Setter) inside the Browscap4jBean from String to Boolean.
