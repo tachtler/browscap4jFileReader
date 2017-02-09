@@ -1,6 +1,4 @@
 # browscap4jFileReader
-A basic Java library for the Browscap.org project.
-
 A simple to use Java code classes, for embedding into your own projects, using the [Browser Capabilities Project](http://browscap.org/) **browscap.csv** file, which can be download from [here](http://browscap.org/stream?q=BrowsCapCSV)
 
 ## Dependencies
@@ -11,7 +9,6 @@ To embed the classes from this project, subsequent dependencies must be embedded
 - opencsv-3.9.jar (or higher) - download from [here](https://sourceforge.net/projects/opencsv/files/opencsv/)
 
 ## Instructions
-
 :exclamation: **Important: Browscap4jFileReader uses Java 8 (1.8)** :exclamation:
 
 The **default** processing mechanism ist **parallel processing**, which uses **Java 8 (1.8) parallel streams**.
@@ -39,6 +36,8 @@ Browscap4jBean browscap4jBean = null;
 browscap4jBean = Browscap4jFileReader.determineBrowscap4jCapabilities(fileReader,
 				"Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/20130917 Firefox/17.0");    
 
+System.out.println(browscap4jBean.getUserAgentString());
+System.out.println(browscap4jBean.getUserAgentStringRegEx());
 System.out.println(browscap4jBean.getPropertyName());
 System.out.println(browscap4jBean.getMasterParent());
 System.out.println(browscap4jBean.getLiteMode());
@@ -90,4 +89,61 @@ System.out.println(browscap4jBean.getRenderingEngineName());
 System.out.println(browscap4jBean.getRenderingEngineVersion());
 System.out.println(browscap4jBean.getRenderingEngineDescription());
 System.out.println(browscap4jBean.getRenderingEngineMaker());
+```
+The output of the parent code for the used User-Agent-String looks like this:
+
+```java
+ *browscap4jBean.getUserAgentString()    	 Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/20130917 Firefox/17.0
+ *browscap4jBean.getUserAgentStringRegEx()	 mozilla/5.0 (x11; linux x86_64; rv:17.0) gecko/20130917 firefox/17.0
+ *browscap4jBean.getPropertyName()       	 Mozilla/5.0 (*Linux*x86_64*) Gecko* Firefox/17.0*
+ *browscap4jBean.getMasterParent()       	 false
+ *browscap4jBean.getLiteMode()           	 false
+ *browscap4jBean.getParent()             	 Firefox 17.0
+ *browscap4jBean.getComment()            	 Firefox 17.0
+ *browscap4jBean.getBrowser()            	 Firefox
+ *browscap4jBean.getBrowserType()        	 Browser
+ *browscap4jBean.getBrowserBits()        	 64
+ *browscap4jBean.getBrowserMaker()       	 Mozilla Foundation
+ *browscap4jBean.getBrowserModus()       	 
+ *browscap4jBean.getVersion()            	 17.0
+ *browscap4jBean.getMajorVersion()       	 17
+ *browscap4jBean.getMinorVersion()       	 0
+ *browscap4jBean.getPlatform()           	 Linux
+ *browscap4jBean.getPlatformVersion()    	 
+ *browscap4jBean.getPlatformDescription()	 Linux
+ *browscap4jBean.getPlatformBits()       	 64
+ *browscap4jBean.getPlatformMaker()      	 Linux Foundation
+ *browscap4jBean.getAlpha()              	 false
+ *browscap4jBean.getBeta()               	 false
+ *browscap4jBean.getWin16()              	 false
+ *browscap4jBean.getWin32()              	 false
+ *browscap4jBean.getWin64()              	 false
+ *browscap4jBean.getFrames()             	 true
+ *browscap4jBean.getiFrames()            	 true
+ *browscap4jBean.getTables()             	 true
+ *browscap4jBean.getCookies()            	 true
+ *browscap4jBean.getBackgroundSounds()   	 false
+ *browscap4jBean.getJavaScript()         	 true
+ *browscap4jBean.getVbScript()           	 false
+ *browscap4jBean.getJavaApplets()        	 true
+ *browscap4jBean.getActiveXControls()    	 false
+ *browscap4jBean.getIsMobileDevice()     	 false
+ *browscap4jBean.getIsTablet()           	 false
+ *browscap4jBean.getIsSyndicationReader()	 false
+ *browscap4jBean.getCrawler()            	 false
+ *browscap4jBean.getIsFake()             	 false
+ *browscap4jBean.getIsAnonymized()       	 false
+ *browscap4jBean.getIsModified()         	 false
+ *browscap4jBean.getCssVersion()         	 3
+ *browscap4jBean.getAolVersion()         	 0
+ *browscap4jBean.getDeviceName()         	 Linux Desktop
+ *browscap4jBean.getDeviceMaker()        	 
+ *browscap4jBean.getDeviceType()         	 Desktop
+ *browscap4jBean.getDevicePointingMethod()	 mouse
+ *browscap4jBean.getDeviceCodeName()     	 Linux Desktop
+ *browscap4jBean.getDeviceBrandName()    	 
+ *browscap4jBean.getRenderingEngineName()	 Gecko
+ *browscap4jBean.getRenderingEngineVersion() 17.0
+ *browscap4jBean.getRenderingEngineDescription() For Firefox, Camino, K-Meleon, SeaMonkey, Netscape, and other Gecko-based browsers.
+ *browscap4jBean.getRenderingEngineMaker()	 Mozilla Foundation
 ```
