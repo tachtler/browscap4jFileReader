@@ -148,3 +148,8 @@ The output of the parent code for the used User-Agent-String looks like this:
  *browscap4jBean.getRenderingEngineDescription() For Firefox, Camino, K-Meleon, SeaMonkey, Netscape, and other Gecko-based browsers.
  *browscap4jBean.getRenderingEngineMaker()	 Mozilla Foundation
 ```
+
+## TODO:
+A list of possible changes fpr the future:
+
+- Change some return values (Getter/Setter) inside the Browscap4jBean from String to Boolean.
