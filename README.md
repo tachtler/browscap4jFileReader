@@ -90,6 +90,7 @@ System.out.println(browscap4jBean.getRenderingEngineVersion());
 System.out.println(browscap4jBean.getRenderingEngineDescription());
 System.out.println(browscap4jBean.getRenderingEngineMaker());
 ```
+## Result example
 The output of the parent code for the used User-Agent-String looks like this:
 
 ```java
