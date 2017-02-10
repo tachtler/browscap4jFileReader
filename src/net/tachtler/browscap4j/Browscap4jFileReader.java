@@ -103,7 +103,7 @@ public class Browscap4jFileReader {
 			while ((col = csvReader.readNext()) != null) {
 
 				/*
-				 * Generate for every entry an new Browscap4jBean.
+				 * Generate for every entry a new Browscap4jBean.
 				 */
 				Browscap4jBean browscap4jBean = new Browscap4jBean();
 
@@ -268,13 +268,13 @@ public class Browscap4jFileReader {
 		if (browsecap4jMapEntry.isPresent()) {
 			browscap4jBean = browsecap4jMapEntry.get().getValue();
 
-			log.debug("Browsercapabilities where found for     : " + userAgentString);
+			log.debug("Browsercapabilities were found for      : " + userAgentString);
 			log.debug("*browsecap4jMapEntry.get().getKey()     : " + browsecap4jMapEntry.get().getKey());
 			log.debug("*browsecap4jMapEntry.get().getValue()   : " + browsecap4jMapEntry.get().getValue());
 		} else {
 			browscap4jBean.init();
 
-			log.debug("Browsercapabilities where NOT found for : " + userAgentString);
+			log.debug("Browsercapabilities were NOT found for  : " + userAgentString);
 		}
 
 		/*
