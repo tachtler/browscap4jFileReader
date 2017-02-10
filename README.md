@@ -38,7 +38,9 @@ try {
 Browscap4jBean browscap4jBean = null;
 browscap4jBean = Browscap4jFileReader.determineBrowscap4jCapabilities(fileReader,
 				"Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/20130917 Firefox/17.0");    
-
+```
+Example for a possible output:
+```java
 System.out.println(browscap4jBean.getUserAgentString());
 System.out.println(browscap4jBean.getUserAgentStringRegEx());
 System.out.println(browscap4jBean.getPropertyName());
