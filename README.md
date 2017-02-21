@@ -154,6 +154,28 @@ The output of the parent code for the used User-Agent-String looks like this:
  *browscap4jBean.getRenderingEngineMaker()	 Mozilla Foundation
 ```
 
+## JAR-File
+The creation of the **browscap4jFileReader.jar** was done with following directory structure:
+```
+commons-lang3-3.4.jar
+log4j-api-2.7.jar
+log4j-core-2.7.jar
+net/tachtler/browscap4j/Browscap4jBean.java
+net/tachtler/browscap4j/Browscap4jFileReader.java
+opencsv-3.9.jar
+```
+
+The uploaded **browscap4jFileReader.jar** was created with follwing commands:
+
+Command for the \*.class compilation:
+```
+javac -g:none -target 1.8 -cp .:*  net/tachtler/browscap4j/*.java
+```
+Command for the JAR file creation:
+```
+jar cvf browscap4jFileReader.jar net/tachtler/browscap4j/*.class
+```
+
 ## TODO:
 A list of possible changes for the future:
 
