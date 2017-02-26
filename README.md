@@ -197,7 +197,14 @@ Calling the **method** ``net.tachtler.browscap4j.Browscap4jFileReader.determineB
 [00:00:00,078] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
 [00:00:00,069] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
 ```
-:exclamation: **Please note, that actual all 51 fields are determined from browscap.csv** :exclamation:
+
+**Version** of the [browscap.csv](http://browscap.org/stream?q=BrowsCapCSV) file:
+```
+GJK_Browscap_Version: 6021, Tue, 31 Jan 2017 15:21:58 +0000
+Lines - browscap.csv: 184,013
+File size in Byte(s): 110,026,752 (110 MegaByte) 
+```
+:point_right: **Please note, that all 51 fields are determined from browscap.csv file!**
 
 ## TODO:
 A list of possible changes for the future:
