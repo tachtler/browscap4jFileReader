@@ -187,12 +187,12 @@ See the (average) results:
 
 Calling the **method** ``net.tachtler.browscap4j.Browscap4jFileReader.initBrowscap4jMap`` **once** at startup:
 ```
-[HH:MM:SS,ms ] : [Name of the medthod]
+[HH:MM:SS,ms ] : [Name of the method]
 [00:00:11,736] : [net.tachtler.browscap4j.Browscap4jFileReader.initBrowscap4jMap]
 ```
 Calling the **method** ``net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities`` at runtime:
 ```
-[HH:MM:SS,ms ] : [Name of the medthod]
+[HH:MM:SS,ms ] : [Name of the method]
 [00:00:00,076] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
 [00:00:00,078] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
 [00:00:00,069] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
