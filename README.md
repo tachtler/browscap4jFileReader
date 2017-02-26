@@ -176,6 +176,29 @@ Command for the JAR file creation:
 jar cvf browscap4jFileReader.jar net/tachtler/browscap4j/*.class
 ```
 
+## Performance
+Performance testing was done on **very old PC** using the **development environment** [Eclipse](http://www.eclipse.org/) **using** [Tomcat 7.0.69](http://tomcat.apache.org/) **server**:
+- Processor: 1 (x64) Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz, 3195 MHz, 4 Core(s), 4 logical Processor(s)
+- Installed physical RAM: 4 GByte (1066 MHz)
+- HDD: WesternDigital WDC WD1500ADFD (10.000 rpm)
+- Start under **development environment** [Eclipse](http://www.eclipse.org/) using [Tomcat 7.0.69](http://tomcat.apache.org/)
+
+See the (average) results:
+
+Calling the **method** ``net.tachtler.browscap4j.Browscap4jFileReader.initBrowscap4jMap`` **once** at start:
+```
+[HH:MM:SS,ms ] : [Name of the medthod]
+[00:00:11,736] : [net.tachtler.browscap4j.Browscap4jFileReader.initBrowscap4jMap]
+```
+Calling the **method** ``net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities`` at runtime:
+```
+[HH:MM:SS,ms ] : [Name of the medthod]
+[00:00:00,076] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,078] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,069] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+```
+:exclamation: **Please note, that actual all 51 fields are determined from browscap.csv** :exclamation:
+
 ## TODO:
 A list of possible changes for the future:
 
