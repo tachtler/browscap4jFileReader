@@ -177,7 +177,7 @@ jar cvf browscap4jFileReader.jar net/tachtler/browscap4j/*.class
 ```
 
 ## Performance
-Performance testing was done on **very old PC** using the **development environment** [Eclipse](http://www.eclipse.org/) **using** [Tomcat 7.0.69](http://tomcat.apache.org/) **server**:
+Performance testing was done on **very old PC** using the **development environment** [Eclipse](http://www.eclipse.org/) **with** [Tomcat 7.0.69](http://tomcat.apache.org/) **server**:
 - Processor: 1 (x64) Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz, 3195 MHz, 4 Core(s), 4 logical Processor(s)
 - Installed physical RAM: 4 GByte (1066 MHz)
 - HDD: WesternDigital WDC WD1500ADFD (10.000 rpm)
@@ -185,7 +185,7 @@ Performance testing was done on **very old PC** using the **development environm
 
 See the (average) results:
 
-Calling the **method** ``net.tachtler.browscap4j.Browscap4jFileReader.initBrowscap4jMap`` **once** at start:
+Calling the **method** ``net.tachtler.browscap4j.Browscap4jFileReader.initBrowscap4jMap`` **once** at startup:
 ```
 [HH:MM:SS,ms ] : [Name of the medthod]
 [00:00:11,736] : [net.tachtler.browscap4j.Browscap4jFileReader.initBrowscap4jMap]
