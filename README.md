@@ -1,6 +1,9 @@
 # browscap4jFileReader
 A simple to use Java code classes, for embedding into your own projects, using the [Browser Capabilities Project](http://browscap.org/) **browscap.csv** file, which can be download from [here](http://browscap.org/stream?q=BrowsCapCSV)
 
+Which fields from browscap.csv are **actual**, **mostly unmaintained** or **deprecated**, can determined from following link:
+[Resource: User Agents Database](https://github.com/browscap/browscap/wiki/Resource%3A-User-Agents-Database)
+
 ## Dependencies
 To embed the classes from this project, subsequent dependencies must be embedded too:
 - commons-lang3-3.4.jar (or higher) - download from [here](https://commons.apache.org/proper/commons-lang/download_lang.cgi)
@@ -209,6 +212,7 @@ File size in Byte(s): 110,026,752 (110 MegaByte)
 ## TODO:
 A list of possible changes for the future:
 
+- Think about, NOT to determine mostly unmaintained or deprecated fields.
 - Change some return values (Getter/Setter) inside the Browscap4jBean from String to Boolean.
 
 ## Thanks to
