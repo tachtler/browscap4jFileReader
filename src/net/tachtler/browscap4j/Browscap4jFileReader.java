@@ -52,8 +52,6 @@ public class Browscap4jFileReader {
 
 	private static Browscap4jBean browscap4jBean = null;
 
-	private static StringBuffer stringBuffer = new StringBuffer();
-
 	/**
 	 * Constructor.
 	 */
@@ -296,10 +294,7 @@ public class Browscap4jFileReader {
 	 */
 	private static String convertToRegex(String regexPattern) {
 
-		/*
-		 * Clear stringBuffer to empty value;
-		 */
-		stringBuffer.delete(0, stringBuffer.length());
+		StringBuffer stringBuffer = new StringBuffer();
 
 		/*
 		 * Add the regular expression anchor at the beginning of the line.
