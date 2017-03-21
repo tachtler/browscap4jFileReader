@@ -42,7 +42,9 @@ Browscap4jBean browscap4jBean = null;
 browscap4jBean = Browscap4jFileReader.determineBrowscap4jCapabilities(fileReader,
 				"Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/20130917 Firefox/17.0");    
 ```
-Example for a possible output:
+Example for a possible output (2017-03-21):
+
+**Actual Properties**:
 ```java
 System.out.println(browscap4jBean.getUserAgentString());
 System.out.println(browscap4jBean.getUserAgentStringRegEx());
@@ -64,29 +66,11 @@ System.out.println(browscap4jBean.getPlatformVersion());
 System.out.println(browscap4jBean.getPlatformDescription());
 System.out.println(browscap4jBean.getPlatformBits());
 System.out.println(browscap4jBean.getPlatformMaker());
-System.out.println(browscap4jBean.getAlpha());
-System.out.println(browscap4jBean.getBeta());
-System.out.println(browscap4jBean.getWin16());
-System.out.println(browscap4jBean.getWin32());
-System.out.println(browscap4jBean.getWin64());
-System.out.println(browscap4jBean.getFrames());
-System.out.println(browscap4jBean.getiFrames());
-System.out.println(browscap4jBean.getTables());
-System.out.println(browscap4jBean.getCookies());
-System.out.println(browscap4jBean.getBackgroundSounds());
-System.out.println(browscap4jBean.getJavaScript());
-System.out.println(browscap4jBean.getVbScript());
-System.out.println(browscap4jBean.getJavaApplets());
-System.out.println(browscap4jBean.getActiveXControls());
-System.out.println(browscap4jBean.getIsMobileDevice());
-System.out.println(browscap4jBean.getIsTablet());
 System.out.println(browscap4jBean.getIsSyndicationReader());
-System.out.println(browscap4jBean.getCrawler());
 System.out.println(browscap4jBean.getIsFake());
 System.out.println(browscap4jBean.getIsAnonymized());
 System.out.println(browscap4jBean.getIsModified());
 System.out.println(browscap4jBean.getCssVersion());
-System.out.println(browscap4jBean.getAolVersion());
 System.out.println(browscap4jBean.getDeviceName());
 System.out.println(browscap4jBean.getDeviceMaker());
 System.out.println(browscap4jBean.getDeviceType());
@@ -98,6 +82,35 @@ System.out.println(browscap4jBean.getRenderingEngineVersion());
 System.out.println(browscap4jBean.getRenderingEngineDescription());
 System.out.println(browscap4jBean.getRenderingEngineMaker());
 ```
+**Mostly unmaintained Properties**:
+
+Theses properties are not actively maintained. Except the first two ones it should be possible to detect these properties with Javascript better.
+```java
+System.out.println(browscap4jBean.getAlpha());
+System.out.println(browscap4jBean.getBeta());
+System.out.println(browscap4jBean.getFrames());
+System.out.println(browscap4jBean.getiFrames());
+System.out.println(browscap4jBean.getTables());
+System.out.println(browscap4jBean.getCookies());
+System.out.println(browscap4jBean.getBackgroundSounds());
+System.out.println(browscap4jBean.getJavaScript());
+System.out.println(browscap4jBean.getVbScript());
+System.out.println(browscap4jBean.getJavaApplets());
+System.out.println(browscap4jBean.getActiveXControls());
+```
+**Deprecated Properties**:
+
+Theses properties are maintained, but deprecated. Replacement properties have been added some time ago.
+```java
+System.out.println(browscap4jBean.getWin16());
+System.out.println(browscap4jBean.getWin32());
+System.out.println(browscap4jBean.getWin64());
+System.out.println(browscap4jBean.getIsMobileDevice());
+System.out.println(browscap4jBean.getIsTablet());
+System.out.println(browscap4jBean.getCrawler());
+System.out.println(browscap4jBean.getAolVersion());
+```
+
 ## Result example
 The output of the parent code for the used User-Agent-String looks like this:
 
@@ -122,29 +135,11 @@ The output of the parent code for the used User-Agent-String looks like this:
  *browscap4jBean.getPlatformDescription()	 Linux
  *browscap4jBean.getPlatformBits()       	 64
  *browscap4jBean.getPlatformMaker()      	 Linux Foundation
- *browscap4jBean.getAlpha()              	 false
- *browscap4jBean.getBeta()               	 false
- *browscap4jBean.getWin16()              	 false
- *browscap4jBean.getWin32()              	 false
- *browscap4jBean.getWin64()              	 false
- *browscap4jBean.getFrames()             	 true
- *browscap4jBean.getiFrames()            	 true
- *browscap4jBean.getTables()             	 true
- *browscap4jBean.getCookies()            	 true
- *browscap4jBean.getBackgroundSounds()   	 false
- *browscap4jBean.getJavaScript()         	 true
- *browscap4jBean.getVbScript()           	 false
- *browscap4jBean.getJavaApplets()        	 true
- *browscap4jBean.getActiveXControls()    	 false
- *browscap4jBean.getIsMobileDevice()     	 false
- *browscap4jBean.getIsTablet()           	 false
  *browscap4jBean.getIsSyndicationReader()	 false
- *browscap4jBean.getCrawler()            	 false
  *browscap4jBean.getIsFake()             	 false
  *browscap4jBean.getIsAnonymized()       	 false
  *browscap4jBean.getIsModified()         	 false
  *browscap4jBean.getCssVersion()         	 3
- *browscap4jBean.getAolVersion()         	 0
  *browscap4jBean.getDeviceName()         	 Linux Desktop
  *browscap4jBean.getDeviceMaker()        	 
  *browscap4jBean.getDeviceType()         	 Desktop
@@ -155,6 +150,26 @@ The output of the parent code for the used User-Agent-String looks like this:
  *browscap4jBean.getRenderingEngineVersion() 17.0
  *browscap4jBean.getRenderingEngineDescription() For Firefox, Camino, K-Meleon, SeaMonkey, Netscape, and other Gecko-based browsers.
  *browscap4jBean.getRenderingEngineMaker()	 Mozilla Foundation
+ 
+ *browscap4jBean.getAlpha()              	 false
+ *browscap4jBean.getBeta()               	 false
+ *browscap4jBean.getFrames()             	 true
+ *browscap4jBean.getiFrames()            	 true
+ *browscap4jBean.getTables()             	 true
+ *browscap4jBean.getCookies()            	 true
+ *browscap4jBean.getBackgroundSounds()   	 false
+ *browscap4jBean.getJavaScript()         	 true
+ *browscap4jBean.getVbScript()           	 false
+ *browscap4jBean.getJavaApplets()        	 true
+ *browscap4jBean.getActiveXControls()    	 false
+ 
+ *browscap4jBean.getWin16()              	 false
+ *browscap4jBean.getWin32()              	 false
+ *browscap4jBean.getWin64()              	 false
+ *browscap4jBean.getIsMobileDevice()     	 false
+ *browscap4jBean.getIsTablet()           	 false
+ *browscap4jBean.getCrawler()            	 false
+ *browscap4jBean.getAolVersion()         	 0
 ```
 
 ## JAR-File
