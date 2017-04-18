@@ -184,7 +184,7 @@ public class Browscap4jFileReader {
 		 * reversed())
 		 * 
 		 */
-		browscap4jMap = listOfBrowscap4jBeans.stream()
+		browscap4jMap = listOfBrowscap4jBeans.stream().parallel()
 				.collect(Collectors.toMap(
 						browscap4jBean -> Pattern.compile(convertToRegex(browscap4jBean.getPropertyName()),
 								Pattern.CASE_INSENSITIVE),
@@ -240,22 +240,16 @@ public class Browscap4jFileReader {
 
 		log.debug("*userAgentStringRegEx                   : " + userAgentStringRegEx);
 
-		final Set<Entry<Pattern, Browscap4jBean>> set = browsecap4jMap.entrySet();
-		Stream<Entry<Pattern, Browscap4jBean>> stream = null;
-
 		/*
-		 * Use the Java 8 (1.8) parallel stream possibilities.
+		 * Compare all the pattern entry's inside browsecap4jMapEntry with the
+		 * Java 8 (1.8) parallel stream possibilities while using the stream and
+		 * the userAgentStringRegEx.
 		 */
-		stream = set.parallelStream();
-
-		/*
-		 * Compare all the pattern entry's inside browsecap4jMapEntry while
-		 * using the stream and the userAgentStringRegEx.
-		 */
-		final Optional<Entry<Pattern, Browscap4jBean>> browsecap4jMapEntry = stream.filter(entry -> {
-			final Matcher matcher = entry.getKey().matcher(userAgentStringRegEx);
-			return matcher.matches();
-		}).findFirst();
+		final Optional<Entry<Pattern, Browscap4jBean>> browsecap4jMapEntry = browsecap4jMap.entrySet().stream()
+				.parallel().filter(entry -> {
+					final Matcher matcher = entry.getKey().matcher(userAgentStringRegEx);
+					return matcher.matches();
+				}).findFirst();
 
 		/*
 		 * Return the search result browsecap4jMapEntry if one was present. If
