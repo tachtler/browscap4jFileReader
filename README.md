@@ -185,13 +185,26 @@ opencsv-3.9.jar
 
 The uploaded **browscap4jFileReader.jar** was created with follwing commands:
 
-Command for the \*.class compilation:
+Command for the \*.class compilation:)
+
+(**Linux**):
 ```
 javac -g:none -target 1.8 -cp .:*  net/tachtler/browscap4j/*.java
 ```
+(**Windows**):
+```
+"<PATH-TO-JDK>\bin\javac.exe" -g:none -target 1.8 -cp *  net\tachtler\browscap4j\*.java
+```
+
 Command for the JAR file creation:
+
+(**Linux**):
 ```
 jar cvf browscap4jFileReader.jar net/tachtler/browscap4j/*.class
+```
+(**Windows**):
+```
+<PATH-TO-JDK>\bin\jar.exe" cvf browscap4jFileReader.jar net\tachtler\browscap4j\*.class
 ```
 
 ## Performance
