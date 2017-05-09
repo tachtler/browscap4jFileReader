@@ -232,6 +232,8 @@ Performance testing was done on **very old PC** using the **development environm
 
 :point_right: **Important: On startup 1,536 MB are recommended !!! (-Xms512m -Xmx1536m or -Xms1536m -Xmx1536m)**
 
+![Browscap4jFileReader-chart](https://github.com/tachtler/browscap4jFileReader/blob/master/Browscap4jFileReader-2017-05-09.png)
+
 See the (average) results:
 
 Calling the **method** ``net.tachtler.browscap4j.Browscap4jFileReader.initBrowscap4jMap`` **once** at startup:
