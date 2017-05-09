@@ -232,20 +232,69 @@ Performance testing was done on **very old PC** using the **development environm
 
 :point_right: **Important: On startup 1,536 MB are recommended !!! (-Xms512m -Xmx1536m or -Xms1536m -Xmx1536m)**
 
-See the (average) results **COMING SOON**:
+See the (average) results:
 
 Calling the **method** ``net.tachtler.browscap4j.Browscap4jFileReader.initBrowscap4jMap`` **once** at startup:
 ```
 [HH:MM:SS,ms ] : [Name of the method]
-[??:??:??,???] : [net.tachtler.browscap4j.Browscap4jFileReader.initBrowscap4jData]
+[00:00:06,113] : [net.tachtler.browscap4j.Browscap4jFileReader.initBrowscap4jData]
 ```
 Calling the **method** ``net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities`` at runtime:
 ```
 [HH:MM:SS,ms ] : [Name of the method]
-[??:??:??,???] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,103] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,094] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,108] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,098] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,141] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,157] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,065] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,545] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,058] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,142] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,006] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,107] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,073] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,044] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,037] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,063] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,073] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,063] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,080] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,086] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,019] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,083] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,004] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,012] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,001] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,002] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,002] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,044] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,001] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,057] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,130] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,147] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,120] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,083] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,013] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,064] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,016] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,015] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,006] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,076] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,069] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,001] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,079] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,081] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,002] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,081] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,033] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,000] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,040] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[00:00:00,035] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
 ```
 ```
-[??:??:??,???] : Average results of 50 calls of different User-Agent-Strings.
+[00:00:00,063] : Average results of 50 calls of different User-Agent-Strings.
 ```
 
 **Version** of the [browscap.csv](http://browscap.org/stream?q=BrowsCapCSV) file:
