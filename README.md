@@ -16,7 +16,7 @@ Main changes are:
 
 The access time are 
 - 20% faster than on version 1.0 on low memory
-- 50% ore more memory consumption ess than on version 1.0 **after initialisation**
+- 50% ore more memory consumption less than on version 1.0 **after initialisation**
 
 ## Dependencies
 To embed the classes from this project, subsequent dependencies must be embedded too:
@@ -230,7 +230,7 @@ Performance testing was done on **very old PC** using the **development environm
 - HDD: WesternDigital WDC WD1500ADFD (10.000 rpm)
 - Start under **development environment** [Eclipse](http://www.eclipse.org/) using [Tomcat 7.0.69](http://tomcat.apache.org/)
 
-**Important: On startup, while initializing 1,536 MB are recommended !!! (-Xms512m -Xmx1536m / -Xms1536m -Xmx1536m)**
+:point_right: **Important: On startup 1,536 MB are recommended !!! (-Xms512m -Xmx1536m or -Xms1536m -Xmx1536m)**
 
 See the (average) results **COMING SOON**:
 
