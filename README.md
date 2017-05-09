@@ -4,12 +4,26 @@ A simple to use Java code classes, for embedding into your own projects, using t
 Which fields from browscap.csv are **actual**, **mostly unmaintained** or **deprecated**, can determined from following link:
 [Resource: User Agents Database](https://github.com/browscap/browscap/wiki/Resource%3A-User-Agents-Database)
 
+## Changes to Version 1.0
+**Complete redesign of the Browscap4jFileReader.**
+
+Main changes are:
+- Reading the file without using opencsv.jar any more using instead Apache commons-io (**faster**)
+- Reading the file and generate a Browscap4jDataBean with Browscap4jMap and Browscap4jString instead of Browscap4jMap only (**less memory**)
+- Browscap4jMap has the compiled regular expression pattern as key and the only Browscap4jPositionBean as value (**less memory**)
+- Browscap4jString contains all the lines read from file as one concatenated string (**less memory**)
+- Access to the data are done by sub string against the Browscap4jMap with position from Browscap4jPositionBean (**faster and less memory**)
+
+The access time are 
+- 20% faster than on version 1.0 on low memory
+- 50% ore more memory consumption ess than on version 1.0 **after initialisation**
+
 ## Dependencies
 To embed the classes from this project, subsequent dependencies must be embedded too:
+- commons-io-2.4.jar (or higher) - download from [here](http://commons.apache.org/proper/commons-io/download_io.cgi)
 - commons-lang3-3.4.jar (or higher) - download from [here](https://commons.apache.org/proper/commons-lang/download_lang.cgi)
 - log4j-api-2.7.jar (or higher) - download from [here](https://logging.apache.org/log4j/2.0/download.html)
 - log4j-core-2.7.jar (or higher) - download from [here](https://logging.apache.org/log4j/2.0/download.html)
-- opencsv-3.9.jar (or higher) - download from [here](https://sourceforge.net/projects/opencsv/files/opencsv/)
 
 Optionally, subsequent dependencies can be imported for testing:
 - junit-4.12.jar (or higher) - download from [here](https://github.com/junit-team/junit4/wiki/Download-and-Install)
@@ -23,10 +37,10 @@ In order to get Browser capabilities, you need to first provide Browscap4jFileRe
 
 (The result of the Browscap4jFileReader will be returned as a **Bean**.)
 ```java
-Map<Pattern, Browscap4jBean> fileReader = null;
+Browscap4jDataBean fileReader = null;
 
 try {
-	fileReader = Browscap4jFileReader.initBrowscap4jMap(new File("./PATH_TO_BROWSCAP_CSV"));
+	fileReader = Browscap4jFileReader4.initBrowscap4jData(new File("./PATH_TO_BROWSCAP_CSV"));
 } catch (IllegalStateException e) {
 	log.error("IllegalStateException : " + e);
 	e.printStackTrace();
@@ -40,9 +54,9 @@ try {
     
 Browscap4jBean browscap4jBean = null;
 browscap4jBean = Browscap4jFileReader.determineBrowscap4jCapabilities(fileReader,
-				"Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/20130917 Firefox/17.0");    
+	"Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/20130917 Firefox/17.0");    
 ```
-Example for a possible output (2017-03-21):
+Example for a possible output (2017-05-09):
 
 **Actual Properties**:
 ```java
@@ -175,12 +189,14 @@ The output of the parent code for the used User-Agent-String looks like this:
 ## JAR-File
 The creation of the **browscap4jFileReader.jar** was done with following directory structure:
 ```
+commons-io-2.4.jar
 commons-lang3-3.4.jar
 log4j-api-2.7.jar
 log4j-core-2.7.jar
 net/tachtler/browscap4j/Browscap4jBean.java
+net/tachtler/browscap4j/Browscap4jDataBean.java
 net/tachtler/browscap4j/Browscap4jFileReader.java
-opencsv-3.9.jar
+net/tachtler/browscap4j/Browscap4jPositionBean.java
 ```
 
 The uploaded **browscap4jFileReader.jar** was created with follwing commands:
@@ -214,72 +230,22 @@ Performance testing was done on **very old PC** using the **development environm
 - HDD: WesternDigital WDC WD1500ADFD (10.000 rpm)
 - Start under **development environment** [Eclipse](http://www.eclipse.org/) using [Tomcat 7.0.69](http://tomcat.apache.org/)
 
-See the (average) results:
+**Important: On startup, while initializing 1,536 MB are recommended !!! (-Xms512m -Xmx1536m / -Xms1536m -Xmx1536m)**
+
+See the (average) results **COMING SOON**:
 
 Calling the **method** ``net.tachtler.browscap4j.Browscap4jFileReader.initBrowscap4jMap`` **once** at startup:
 ```
 [HH:MM:SS,ms ] : [Name of the method]
-[00:00:05,575] : [net.tachtler.browscap4j.Browscap4jFileReader.initBrowscap4jMap]
+[??:??:??,???] : [net.tachtler.browscap4j.Browscap4jFileReader.initBrowscap4jData]
 ```
 Calling the **method** ``net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities`` at runtime:
 ```
 [HH:MM:SS,ms ] : [Name of the method]
-[00:00:00,076] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,078] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,069] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,322] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,276] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,108] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,080] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,110] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,116] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,065] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,061] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,053] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,107] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,005] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,088] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,077] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,043] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,040] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,080] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,079] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,338] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,057] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,081] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,012] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,082] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,004] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,012] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,001] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,001] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,002] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,033] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,001] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,062] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,147] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,151] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,121] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,090] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,013] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,043] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,023] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,012] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,003] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,071] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,072] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,001] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,056] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,073] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,002] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,078] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,031] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,004] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,333] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
-[00:00:00,040] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
+[??:??:??,???] : [net.tachtler.browscap4j.Browscap4jFileReader.determineBrowscap4jCapabilities]
 ```
 ```
-[00.00:00,075] : Average results of 50 calls of different User-Agent-Strings.
+[??:??:??,???] : Average results of 50 calls of different User-Agent-Strings.
 ```
 
 **Version** of the [browscap.csv](http://browscap.org/stream?q=BrowsCapCSV) file:
