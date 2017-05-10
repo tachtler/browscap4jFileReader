@@ -229,10 +229,11 @@ Performance testing was done on **very old PC** using the **development environm
 - Installed physical RAM: 4 GByte (1066 MHz)
 - HDD: WesternDigital WDC WD1500ADFD (10.000 rpm)
 - Start under **development environment** [Eclipse](http://www.eclipse.org/) using [Tomcat 7.0.69](http://tomcat.apache.org/)
+- Special JAVA start paramater: **-Xms512m -Xmx1536m**
 
 :point_right: **Important: On startup 1,536 MB are recommended !!! (-Xms512m -Xmx1536m or -Xms1536m -Xmx1536m)**
 
-![Browscap4jFileReader-chart](https://github.com/tachtler/browscap4jFileReader/blob/master/Browscap4jFileReader-2017-05-09.png)
+![Browscap4jFileReader-JUnit-Test](https://github.com/tachtler/browscap4jFileReader/blob/master/doc/Browscap4jFileReader-2017-05-09-Eclipse-JUnit-Test.png)
 
 See the (average) results:
 
@@ -299,6 +300,156 @@ Calling the **method** ``net.tachtler.browscap4j.Browscap4jFileReader.determineB
 [00:00:00,063] : Average results of 50 calls of different User-Agent-Strings.
 ```
 
+## Apache benchmark Tomcat 
+Performance benchmark was also on **very old PC** using the **development environment** [Eclipse](http://www.eclipse.org/) **with** [Tomcat 7.0.69](http://tomcat.apache.org/) **server**:
+- Processor: 1 (x64) Intel(R) Core(TM)2 Quad CPU Q6600 @ 2.40GHz, 3195 MHz, 4 Core(s), 4 logical Processor(s)
+- Installed physical RAM: 4 GByte (1066 MHz)
+- HDD: WesternDigital WDC WD1500ADFD (10.000 rpm)
+- Start under **development environment** [Eclipse](http://www.eclipse.org/) using [Tomcat 7.0.69](http://tomcat.apache.org/)
+- Special JAVA start paramater: **-Xms512m -Xmx1536m**
+
+![Browscap4jFileReader-Tomcat-Benchmark](https://github.com/tachtler/browscap4jFileReader/blob/master/doc/Browscap4jFileReader-2017-05-10-Eclipse-Tomcat-7.0.69-Benchmark.png)
+
+#### Apache bechmark Time: **06:44:00** (50 requests |  1 concurrent):
+```
+ab -n 50 -c 1 http://127.0.0.1:8000/browscap4jFileReader.action
+This is ApacheBench, Version 2.3 <$Revision: 1757674 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient).....done
+
+
+Server Software:        Apache-Coyote/1.1
+Server Hostname:        127.0.0.1
+Server Port:            8000
+
+Document Path:          /browscap4jFileReader.action
+Document Length:        13929 bytes
+
+Concurrency Level:      1
+Time taken for tests:   1.591 seconds
+Complete requests:      50
+Failed requests:        0
+Total transferred:      707250 bytes
+HTML transferred:       696450 bytes
+Requests per second:    31.42 [#/sec] (mean)
+Time per request:       31.822 [ms] (mean)
+Time per request:       31.822 [ms] (mean, across all concurrent requests)
+Transfer rate:          434.09 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.4      0       1
+Processing:    24   31   8.3     29      67
+Waiting:       23   31   8.2     28      66
+Total:         24   32   8.3     30      67
+
+Percentage of the requests served within a certain time (ms)
+  50%     30
+  66%     31
+  75%     33
+  80%     37
+  90%     44
+  95%     48
+  98%     67
+  99%     67
+ 100%     67 (longest request)
+```
+#### Apache bechmark Time: **06:44:15** (50 requests | 10 concurrent):
+```
+ab -n 50 -c 10 http://127.0.0.1:8000/browscap4jFileReader.action
+This is ApacheBench, Version 2.3 <$Revision: 1757674 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient).....done
+
+
+Server Software:        Apache-Coyote/1.1
+Server Hostname:        127.0.0.1
+Server Port:            8000
+
+Document Path:          /browscap4jFileReader.action
+Document Length:        13929 bytes
+
+Concurrency Level:      10
+Time taken for tests:   0.822 seconds
+Complete requests:      50
+Failed requests:        0
+Total transferred:      707250 bytes
+HTML transferred:       696450 bytes
+Requests per second:    60.82 [#/sec] (mean)
+Time per request:       164.410 [ms] (mean)
+Time per request:       16.441 [ms] (mean, across all concurrent requests)
+Transfer rate:          840.19 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.4      0       1
+Processing:    26  157  95.2    129     446
+Waiting:       25  152  95.7    124     446
+Total:         26  157  95.3    129     446
+
+Percentage of the requests served within a certain time (ms)
+  50%    129
+  66%    207
+  75%    221
+  80%    244
+  90%    273
+  95%    327
+  98%    446
+  99%    446
+ 100%    446 (longest request)
+```
+#### Apache bechmark Time: **06:44:30** (50 requests | 50 concurrent):
+```
+ab -n 50 -c 50 http://127.0.0.1:8000/de_screen_00_visitordata.action
+This is ApacheBench, Version 2.3 <$Revision: 1757674 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient).....done
+
+
+Server Software:        Apache-Coyote/1.1
+Server Hostname:        127.0.0.1
+Server Port:            8000
+
+Document Path:          /de_screen_00_visitordata.action
+Document Length:        13929 bytes
+
+Concurrency Level:      50
+Time taken for tests:   0.735 seconds
+Complete requests:      50
+Failed requests:        0
+Total transferred:      707250 bytes
+HTML transferred:       696450 bytes
+Requests per second:    68.02 [#/sec] (mean)
+Time per request:       735.044 [ms] (mean)
+Time per request:       14.701 [ms] (mean, across all concurrent requests)
+Transfer rate:          939.64 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    1   1.5      0      10
+Processing:    81  384 166.4    386     629
+Waiting:       81  372 177.6    384     628
+Total:         81  385 165.8    386     629
+
+Percentage of the requests served within a certain time (ms)
+  50%    386
+  66%    460
+  75%    557
+  80%    584
+  90%    606
+  95%    617
+  98%    629
+  99%    629
+ 100%    629 (longest request)
+```
+
+## Used browscap.csv file
 **Version** of the [browscap.csv](http://browscap.org/stream?q=BrowsCapCSV) file:
 ```
 GJK_Browscap_Version: 6022, Tue, 28 Mar 2017 09:22:37 +0000
