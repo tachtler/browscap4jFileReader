@@ -404,7 +404,7 @@ Percentage of the requests served within a certain time (ms)
 ```
 #### Apache bechmark Time: **06:44:30** (50 requests | 50 concurrent):
 ```
-ab -n 50 -c 50 http://127.0.0.1:8000/de_screen_00_visitordata.action
+ab -n 50 -c 50 http://127.0.0.1:8000/browscap4jFileReader.action
 This is ApacheBench, Version 2.3 <$Revision: 1757674 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
@@ -416,7 +416,7 @@ Server Software:        Apache-Coyote/1.1
 Server Hostname:        127.0.0.1
 Server Port:            8000
 
-Document Path:          /de_screen_00_visitordata.action
+Document Path:          /browscap4jFileReader.action
 Document Length:        13929 bytes
 
 Concurrency Level:      50
