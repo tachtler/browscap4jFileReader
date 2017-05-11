@@ -8,7 +8,7 @@ Which fields from browscap.csv are **actual**, **mostly unmaintained** or **depr
 **Complete redesign of the Browscap4jFileReader.**
 
 Main changes are:
-- Reading the file without using opencsv.jar any more using instead Apache commons-io (**fasterand less memory**)
+- Reading the file without using opencsv.jar any more using instead Apache commons-io (**faster and less memory**)
 - Reading the file and generate a Browscap4jDataBean with Browscap4jMap and Browscap4jString instead of Browscap4jMap only (**less memory**)
 - Browscap4jMap has the compiled regular expression pattern as key and only the Browscap4jPositionBean as value (**less memory**)
 - Browscap4jString contains all the lines read from file as one concatenated string (**less memory**)
