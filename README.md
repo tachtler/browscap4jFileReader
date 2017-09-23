@@ -20,10 +20,10 @@ The access time are
 
 ## Dependencies
 To embed the classes from this project, subsequent dependencies must be embedded too:
-- commons-io-2.4.jar (or higher) - download from [here](http://commons.apache.org/proper/commons-io/download_io.cgi)
-- commons-lang3-3.4.jar (or higher) - download from [here](https://commons.apache.org/proper/commons-lang/download_lang.cgi)
-- log4j-api-2.7.jar (or higher) - download from [here](https://logging.apache.org/log4j/2.0/download.html)
-- log4j-core-2.7.jar (or higher) - download from [here](https://logging.apache.org/log4j/2.0/download.html)
+- commons-io-2.5.jar (or higher) - download from [here](http://commons.apache.org/proper/commons-io/download_io.cgi)
+- commons-lang3-3.6.jar (or higher) - download from [here](https://commons.apache.org/proper/commons-lang/download_lang.cgi)
+- log4j-api-2.8.2.jar (or higher) - download from [here](https://logging.apache.org/log4j/2.0/download.html)
+- log4j-core-2.8.2.jar (or higher) - download from [here](https://logging.apache.org/log4j/2.0/download.html)
 
 Optionally, subsequent dependencies can be imported for testing:
 - junit-4.12.jar (or higher) - download from [here](https://github.com/junit-team/junit4/wiki/Download-and-Install)
@@ -449,7 +449,7 @@ Percentage of the requests served within a certain time (ms)
  100%    629 (longest request)
 ```
 
-## Used browscap.csv file
+## Used browscap.csv file for the tests above
 **Version** of the [browscap.csv](http://browscap.org/stream?q=BrowsCapCSV) file:
 ```
 GJK_Browscap_Version: 6022, Tue, 28 Mar 2017 09:22:37 +0000
