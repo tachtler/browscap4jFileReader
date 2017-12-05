@@ -40,7 +40,7 @@ In order to get Browser capabilities, you need to first provide Browscap4jFileRe
 Browscap4jDataBean fileReader = null;
 
 try {
-	fileReader = Browscap4jFileReader4.initBrowscap4jData(new File("./PATH_TO_BROWSCAP_CSV"));
+	fileReader = Browscap4jFileReader.initBrowscap4jData(new File("./PATH_TO_BROWSCAP_CSV"));
 } catch (IllegalStateException e) {
 	log.error("IllegalStateException : " + e);
 	e.printStackTrace();
