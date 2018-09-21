@@ -4,10 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.LinkedHashMap;
-import java.util.Optional;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
@@ -33,6 +34,9 @@ import org.apache.logging.log4j.Logger;
 public class Browscap4jFileReader {
 
 	private static Logger log = LogManager.getLogger();
+
+	private static int browsecap4jMapEntrySize = 0;
+	private static Entry<Pattern, Browscap4jPositionBean> browsecap4jMapEntry = null;
 
 	/**
 	 * Constructor.
@@ -152,6 +156,12 @@ public class Browscap4jFileReader {
 			String userAgentString) {
 
 		/*
+		 * Initialize Variables.
+		 */
+		browsecap4jMapEntrySize = 0;
+		browsecap4jMapEntry = null;
+
+		/*
 		 * Debug NOT the browscap4jDataBean, because of too much entry's, only
 		 * the class should be printed out in debug mode, to see if the
 		 * browscap4jDataBean is NOT null.
@@ -197,25 +207,53 @@ public class Browscap4jFileReader {
 		 * Java 8 (1.8) parallel stream possibilities while using the stream and
 		 * the userAgentStringRegEx.
 		 */
-		final Optional<Entry<Pattern, Browscap4jPositionBean>> browsecap4jMapEntry = browscap4jDataBean
-				.getBrowscap4jMap().entrySet().stream().parallel().filter(entry -> {
-					final Matcher matcher = entry.getKey().matcher(userAgentStringRegEx);
+		Map<Pattern, Browscap4jPositionBean> browsecap4jMapEntrys = browscap4jDataBean.getBrowscap4jMap().entrySet()
+				.parallelStream().filter(map -> {
+					final Matcher matcher = map.getKey().matcher(userAgentStringRegEx);
 					return matcher.matches();
-				}).findFirst();
+				}).collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
+
+		log.debug("*browsecap4jMapEntrys                   : " + browsecap4jMapEntrys);
+
+		log.debug("-----------------------------------------");
 
 		/*
-		 * Return the search result browsecap4jMapEntry if one was present. If
-		 * true, generate a browscap4jBean from the browscap4jString using the
-		 * Browscap4jPositionBean position values from browscap4jMap . If false
-		 * generate a browscap4jBean with empty values and the search fields
+		 * Sort the result map, to determine the longest key as the best match
+		 * and put that "entry" into an Entry<Pattern, Browscap4jPositionBean>
+		 * (browsecap4jMapEntry).
+		 */
+		browsecap4jMapEntrys.entrySet().parallelStream().forEachOrdered(entry -> {
+
+			if (browsecap4jMapEntrySize < entry.getKey().toString().length()) {
+				browsecap4jMapEntrySize = entry.getKey().toString().length();
+				browsecap4jMapEntry = entry;
+			}
+
+			log.debug("entry.getKey().toString()               : " + entry.getKey().toString());
+			log.debug("entry.getKey().toString().length()      : " + entry.getKey().toString().length());
+			log.debug("-----------------------------------------");
+
+		});
+
+		log.debug("*browsecap4jMapEntry.getKey()           : " + browsecap4jMapEntry.getKey());
+		log.debug("*browsecap4jMapEntry.getValue()         : " + browsecap4jMapEntry.getValue());
+
+		/*
+		 * Return the search result browsecap4jMapEntry if one was not empty. If
+		 * it was not empty, generate a Browscap4jBean (browscap4jBean) from the
+		 * browsecap4jMapEntry.getValue() using the Browscap4jPositionBean
+		 * position values from browscap4jPositionBean. If false generate a
+		 * browscap4jBean with empty values and the search fields
 		 * userAgentString and userAgentStringRegEx.
 		 */
-		if (browsecap4jMapEntry.isPresent()) {
+		if (!browsecap4jMapEntry.getKey().toString().isEmpty()) {
+
+			Browscap4jPositionBean browscap4jPositionBean = new Browscap4jPositionBean();
+
+			browscap4jPositionBean = browsecap4jMapEntry.getValue();
 
 			String[] result = browscap4jDataBean.getBrowscap4jString()
-					.substring(browsecap4jMapEntry.get().getValue().getOffset(),
-							browsecap4jMapEntry.get().getValue().getLength())
-					.split("\",\"");
+					.substring(browscap4jPositionBean.getOffset(), browscap4jPositionBean.getLength()).split("\",\"");
 
 			/*
 			 * Fill up the former generated browscap4jBean with the fields from
@@ -274,9 +312,9 @@ public class Browscap4jFileReader {
 			browscap4jBean.setRenderingEngineMaker(result[50].substring(0, result[50].length() - 1));
 
 			log.debug("Browsercapabilities were found for      : " + userAgentString);
-			log.debug("*browsecap4jMapEntry.get().getKey()     : " + browsecap4jMapEntry.get().getKey());
-			log.debug("*browsecap4jMapEntry.get()...getOffset(): " + browsecap4jMapEntry.get().getValue().getOffset());
-			log.debug("*browsecap4jMapEntry.get()...getLength(): " + browsecap4jMapEntry.get().getValue().getLength());
+			log.debug("*browsecap4jMapEntry.get().getKey()     : " + browsecap4jMapEntry.getKey());
+			log.debug("*browsecap4jMapEntry.get()...getOffset(): " + browscap4jPositionBean.getOffset());
+			log.debug("*browsecap4jMapEntry.get()...getLength(): " + browscap4jPositionBean.getLength());
 
 		} else {
 			browscap4jBean.init();
