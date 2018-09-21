@@ -4,6 +4,8 @@ A simple to use Java code classes, for embedding into your own projects, using t
 Which fields from browscap.csv are **actual**, **mostly unmaintained** or **deprecated**, can determined from following link:
 [Resource: User Agents Database](https://github.com/browscap/browscap/wiki/Resource%3A-User-Agents-Database)
 
+**2018-09-21** - **BugFix** - The result related to the UserAgentString was not determined correctly.
+
 ## Changes to Version 1.0
 **Complete redesign of the Browscap4jFileReader.**
 
@@ -22,8 +24,8 @@ The access time are
 To embed the classes from this project, subsequent dependencies must be embedded too:
 - commons-io-2.5.jar (or higher) - download from [here](http://commons.apache.org/proper/commons-io/download_io.cgi)
 - commons-lang3-3.6.jar (or higher) - download from [here](https://commons.apache.org/proper/commons-lang/download_lang.cgi)
-- log4j-api-2.8.2.jar (or higher) - download from [here](https://logging.apache.org/log4j/2.0/download.html)
-- log4j-core-2.8.2.jar (or higher) - download from [here](https://logging.apache.org/log4j/2.0/download.html)
+- log4j-api-2.10.0.jar (or higher) - download from [here](https://logging.apache.org/log4j/2.0/download.html)
+- log4j-core-2.10.0.jar (or higher) - download from [here](https://logging.apache.org/log4j/2.0/download.html)
 
 Optionally, subsequent dependencies can be imported for testing:
 - junit-4.12.jar (or higher) - download from [here](https://github.com/junit-team/junit4/wiki/Download-and-Install)
@@ -191,8 +193,8 @@ The creation of the **browscap4jFileReader.jar** was done with following directo
 ```
 commons-io-2.4.jar
 commons-lang3-3.4.jar
-log4j-api-2.7.jar
-log4j-core-2.7.jar
+log4j-api-2.10.0.jar
+log4j-core-2.10.0.jar
 net/tachtler/browscap4j/Browscap4jBean.java
 net/tachtler/browscap4j/Browscap4jDataBean.java
 net/tachtler/browscap4j/Browscap4jFileReader.java
