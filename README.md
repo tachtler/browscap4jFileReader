@@ -4,7 +4,11 @@ A simple to use Java code classes, for embedding into your own projects, using t
 Which fields from browscap.csv are **actual**, **mostly unmaintained** or **deprecated**, can determined from following link:
 [Resource: User Agents Database](https://github.com/browscap/browscap/wiki/Resource%3A-User-Agents-Database)
 
+## Changes to Version 1.1
 **2018-09-21** - **BugFix** - The result related to the UserAgentString was not determined correctly.
+
+Main changes are:
+- Extension of the data determination based on the UserAgentString. It is **no longer the first hit** from the file ```browscap.csv``` that is determined, but the **best hit is now determined from a list of RegEx hits**, from which **the hit with the longest key field length** is then **used as the best hit**.
 
 ## Changes to Version 1.0
 **Complete redesign of the Browscap4jFileReader.**
