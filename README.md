@@ -10,6 +10,9 @@ Which fields from browscap.csv are **actual**, **mostly unmaintained** or **depr
 Main changes are:
 - Extension of the data determination based on the UserAgentString. It is **no longer the first hit** from the file ```browscap.csv``` that is determined, but the **best hit is now determined from a list of RegEx hits**, from which **the hit with the longest key field length** is then **used as the best hit**.
 
+The access time are 
+- 10% slower than on version 1.1 (But what is a timing value, if the result is wrong?)
+
 ## Changes to Version 1.0
 **Complete redesign of the Browscap4jFileReader.**
 
