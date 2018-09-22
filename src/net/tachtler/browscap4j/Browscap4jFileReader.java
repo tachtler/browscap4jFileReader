@@ -29,7 +29,7 @@ import org.apache.logging.log4j.Logger;
  *         the Free Software Foundation; either version 2 of the License, or (at
  *         your option) any later version.
  * 
- *         Copyright (c) 2017 by Klaus Tachtler.
+ *         Copyright (c) 2018 by Klaus Tachtler.
  ******************************************************************************/
 public class Browscap4jFileReader {
 
@@ -60,17 +60,15 @@ public class Browscap4jFileReader {
 		log.debug("*csvFile                                : " + csvFile);
 
 		/**
-		 * Browscap4jDataBean with the LinkedHashMap<Pattern,
-		 * Browscap4jPositionBean> browscap4jMap and the String browscap4jString
-		 * as data.
+		 * Browscap4jDataBean with the LinkedHashMap<Pattern, Browscap4jPositionBean>
+		 * browscap4jMap and the String browscap4jString as data.
 		 */
 		Browscap4jDataBean browscap4jDataBean = new Browscap4jDataBean();
 
 		/**
-		 * LinkedHashMap with regular expression pattern as key from the
-		 * original userAgentString and Browscap4jPositionBean integer variables
-		 * as value object by determining the offset and the length for each
-		 * line.
+		 * LinkedHashMap with regular expression pattern as key from the original
+		 * userAgentString and Browscap4jPositionBean integer variables as value object
+		 * by determining the offset and the length for each line.
 		 */
 		LinkedHashMap<Pattern, Browscap4jPositionBean> browscap4jMap = new LinkedHashMap<Pattern, Browscap4jPositionBean>();
 
@@ -93,12 +91,11 @@ public class Browscap4jFileReader {
 		}
 
 		/*
-		 * Iterate over the csvFile - browscap.csv with all the data and
-		 * generate a string with all the lines concatenated. Generate a regular
-		 * expression pattern from the first column of the csvFile -
-		 * browscap.csv as key and calculate the offset and the length for every
-		 * single line inside the concatenated string as Browscap4jPositionBean
-		 * as value.
+		 * Iterate over the csvFile - browscap.csv with all the data and generate a
+		 * string with all the lines concatenated. Generate a regular expression pattern
+		 * from the first column of the csvFile - browscap.csv as key and calculate the
+		 * offset and the length for every single line inside the concatenated string as
+		 * Browscap4jPositionBean as value.
 		 */
 		LineIterator lineIterator = FileUtils.lineIterator(csvFile, "UTF-8");
 
@@ -125,15 +122,14 @@ public class Browscap4jFileReader {
 		}
 
 		/*
-		 * Generate the String browscap4jString from StringBuilder
-		 * stringBuilder.
+		 * Generate the String browscap4jString from StringBuilder stringBuilder.
 		 */
 		browscap4jString = stringBuilder.toString();
 
 		/*
-		 * Debug NOT the Map and the String, because of too much entry's, only
-		 * the class should be printed out in debug mode, to see if the
-		 * browscap4jMap and the browscap4jString are NOT null.
+		 * Debug NOT the Map and the String, because of too much entry's, only the class
+		 * should be printed out in debug mode, to see if the browscap4jMap and the
+		 * browscap4jString are NOT null.
 		 */
 		log.debug("*browscap4jMap                          : " + browscap4jMap.getClass());
 		log.debug("*browscap4jString                       : " + browscap4jString.getClass());
@@ -156,22 +152,16 @@ public class Browscap4jFileReader {
 			String userAgentString) {
 
 		/*
-		 * Initialize Variables.
-		 */
-		browsecap4jMapEntrySize = 0;
-		browsecap4jMapEntry = null;
-
-		/*
-		 * Debug NOT the browscap4jDataBean, because of too much entry's, only
-		 * the class should be printed out in debug mode, to see if the
-		 * browscap4jDataBean is NOT null.
+		 * Debug NOT the browscap4jDataBean, because of too much entry's, only the class
+		 * should be printed out in debug mode, to see if the browscap4jDataBean is NOT
+		 * null.
 		 */
 		log.debug("*browscap4jDataBean                     : " + browscap4jDataBean.getClass());
 
 		/*
-		 * Debug NOT the Map and the String, because of too much entry's, only
-		 * the class should be printed out in debug mode, to see if the
-		 * browscap4jMap and the browscap4jString are NOT null.
+		 * Debug NOT the Map and the String, because of too much entry's, only the class
+		 * should be printed out in debug mode, to see if the browscap4jMap and the
+		 * browscap4jString are NOT null.
 		 */
 		log.debug("*browscap4jDataBean.getBrowscap4jMap()  : " + browscap4jDataBean.getBrowscap4jMap().getClass());
 		log.debug("*browscap4jString                       : " + browscap4jDataBean.getBrowscap4jString().getClass());
@@ -179,13 +169,14 @@ public class Browscap4jFileReader {
 		log.debug("*userAgentString                        : " + userAgentString);
 
 		/**
-		 * Initialize target Browscap4jBean for the result.
+		 * Initialize variables and the target Browscap4jBean for the result.
 		 */
+		browsecap4jMapEntrySize = 0;
+		browsecap4jMapEntry = null;
 		Browscap4jBean browscap4jBean = null;
 
 		/**
-		 * Instance browscap4jBean and initialize all values to "" (empty)
-		 * strings.
+		 * Instance browscap4jBean and initialize all values to "" (empty) strings.
 		 */
 		browscap4jBean = new Browscap4jBean();
 		browscap4jBean.init();
@@ -193,19 +184,18 @@ public class Browscap4jFileReader {
 		log.debug("*browscap4jBean                         : " + browscap4jBean);
 
 		/*
-		 * If one ore more results where determined, than take the first one. If
-		 * nothing was found fill up the browscap4jBean with empty values. This
-		 * search was done by using the stream capabilities of a parallel search
-		 * by Java 8 (1.8).
+		 * If one ore more results where determined, than take the first one. If nothing
+		 * was found fill up the browscap4jBean with empty values. This search was done
+		 * by using the stream capabilities of a parallel search by Java 8 (1.8).
 		 */
 		String userAgentStringRegEx = userAgentString.toLowerCase();
 
 		log.debug("*userAgentStringRegEx                   : " + userAgentStringRegEx);
 
 		/*
-		 * Compare all the pattern entry's inside browsecap4jMapEntry with the
-		 * Java 8 (1.8) parallel stream possibilities while using the stream and
-		 * the userAgentStringRegEx.
+		 * Compare all the pattern entry's inside browsecap4jMapEntry with the Java 8
+		 * (1.8) parallel stream possibilities while using the stream and the
+		 * userAgentStringRegEx.
 		 */
 		Map<Pattern, Browscap4jPositionBean> browsecap4jMapEntrys = browscap4jDataBean.getBrowscap4jMap().entrySet()
 				.parallelStream().filter(map -> {
@@ -218,8 +208,8 @@ public class Browscap4jFileReader {
 		log.debug("-----------------------------------------");
 
 		/*
-		 * Sort the result map, to determine the longest key as the best match
-		 * and put that "entry" into an Entry<Pattern, Browscap4jPositionBean>
+		 * Sort the result map, to determine the longest key as the best match and put
+		 * that "entry" into an Entry<Pattern, Browscap4jPositionBean>
 		 * (browsecap4jMapEntry).
 		 */
 		browsecap4jMapEntrys.entrySet().parallelStream().forEachOrdered(entry -> {
@@ -239,14 +229,14 @@ public class Browscap4jFileReader {
 		log.debug("*browsecap4jMapEntry.getValue()         : " + browsecap4jMapEntry.getValue());
 
 		/*
-		 * Return the search result browsecap4jMapEntry if one was not empty. If
-		 * it was not empty, generate a Browscap4jBean (browscap4jBean) from the
-		 * browsecap4jMapEntry.getValue() using the Browscap4jPositionBean
-		 * position values from browscap4jPositionBean. If false generate a
-		 * browscap4jBean with empty values and the search fields
-		 * userAgentString and userAgentStringRegEx.
+		 * Return the search result browsecap4jMapEntry if one was not empty. If it was
+		 * not empty, generate a Browscap4jBean (browscap4jBean) from the
+		 * browsecap4jMapEntry.getValue() using the Browscap4jPositionBean position
+		 * values from browscap4jPositionBean. If false generate a browscap4jBean with
+		 * empty values and the search fields userAgentString and userAgentStringRegEx.
 		 */
-		if (!browsecap4jMapEntry.getKey().toString().isEmpty()) {
+		if (!browsecap4jMapEntry.getKey().toString().isEmpty()
+				&& !browsecap4jMapEntry.getKey().toString().equals("^.*?$")) {
 
 			Browscap4jPositionBean browscap4jPositionBean = new Browscap4jPositionBean();
 
@@ -256,8 +246,8 @@ public class Browscap4jFileReader {
 					.substring(browscap4jPositionBean.getOffset(), browscap4jPositionBean.getLength()).split("\",\"");
 
 			/*
-			 * Fill up the former generated browscap4jBean with the fields from
-			 * csvFile - browscap.csv.
+			 * Fill up the former generated browscap4jBean with the fields from csvFile -
+			 * browscap.csv.
 			 */
 			browscap4jBean.setPropertyName(result[0].substring(1));
 			browscap4jBean.setMasterParent(result[1]);
