@@ -198,8 +198,8 @@ The output of the parent code for the used User-Agent-String looks like this:
 ## JAR-File
 The creation of the **browscap4jFileReader.jar** was done with following directory structure:
 ```
-commons-io-2.4.jar
-commons-lang3-3.4.jar
+commons-io-2.5.jar
+commons-lang3-3.6.jar
 log4j-api-2.10.0.jar
 log4j-core-2.10.0.jar
 net/tachtler/browscap4j/Browscap4jBean.java
