@@ -4,6 +4,16 @@ A simple to use Java code classes, for embedding into your own projects, using t
 Which fields from browscap.csv are **actual**, **mostly unmaintained** or **deprecated**, can determined from following link:
 [Resource: User Agents Database](https://github.com/browscap/browscap/wiki/Resource%3A-User-Agents-Database)
 
+## Changes to Version 1.2
+**2022-04-19** - **Vulnerability** - Update **jar**-File to actual log4j2 version.
+
+Main changes are:
+- Update **log4j2** to version 2.17.2 (CVE-2021-44832).
+- Remove deprecated API call (LineIterator.closeQuietly).
+
+The access time are 
+ - The same as **Version 1.1**
+
 ## Changes to Version 1.1
 **2018-09-21** - **BugFix** - The result related to the UserAgentString was not determined correctly.
 
