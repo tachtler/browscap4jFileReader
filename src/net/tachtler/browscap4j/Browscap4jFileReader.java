@@ -29,7 +29,7 @@ import org.apache.logging.log4j.Logger;
  *         the Free Software Foundation; either version 2 of the License, or (at
  *         your option) any later version.
  * 
- *         Copyright (c) 2018 by Klaus Tachtler.
+ *         Copyright (c) 2022 by Klaus Tachtler.
  ******************************************************************************/
 public class Browscap4jFileReader {
 
@@ -118,7 +118,11 @@ public class Browscap4jFileReader {
 				stringBuilder.append(line);
 			}
 		} finally {
-			LineIterator.closeQuietly(lineIterator);
+			try {
+				lineIterator.close();
+			} catch (IOException eIOException) {
+				log.debug("IOException                             : " + eIOException);
+			}
 		}
 
 		/*
