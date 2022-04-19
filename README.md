@@ -39,13 +39,13 @@ The access time are
 
 ## Dependencies
 To embed the classes from this project, subsequent dependencies must be embedded too:
-- commons-io-2.5.jar (or higher) - download from [here](http://commons.apache.org/proper/commons-io/download_io.cgi)
-- commons-lang3-3.6.jar (or higher) - download from [here](https://commons.apache.org/proper/commons-lang/download_lang.cgi)
-- log4j-api-2.10.0.jar (or higher) - download from [here](https://logging.apache.org/log4j/2.0/download.html)
-- log4j-core-2.10.0.jar (or higher) - download from [here](https://logging.apache.org/log4j/2.0/download.html)
+- commons-io-2.11.0.jar (or higher) - download from [here](http://commons.apache.org/proper/commons-io/download_io.cgi)
+- commons-lang3-3.12.0.jar (or higher) - download from [here](https://commons.apache.org/proper/commons-lang/download_lang.cgi)
+- log4j-api-2.17.2.jar (or higher) - download from [here](https://logging.apache.org/log4j/2.0/download.html)
+- log4j-core-2.17.2.jar (or higher) - download from [here](https://logging.apache.org/log4j/2.0/download.html)
 
 Optionally, subsequent dependencies can be imported for testing:
-- junit-4.12.jar (or higher) - download from [here](https://github.com/junit-team/junit4/wiki/Download-and-Install)
+- junit-4.13.2.jar (or higher) - download from [here](https://github.com/junit-team/junit4/wiki/Download-and-Install)
 
 ## Instructions
 :exclamation: **Important: Browscap4jFileReader uses Java 8 (1.8)** :exclamation:
@@ -208,10 +208,10 @@ The output of the parent code for the used User-Agent-String looks like this:
 ## JAR-File
 The creation of the **browscap4jFileReader.jar** was done with following directory structure:
 ```
-commons-io-2.5.jar
-commons-lang3-3.6.jar
-log4j-api-2.10.0.jar
-log4j-core-2.10.0.jar
+commons-io-2.11.0.jar
+commons-lang3-3.12.0.jar
+log4j-api-2.17.2.jar
+log4j-core-2.17.2.jar
 net/tachtler/browscap4j/Browscap4jBean.java
 net/tachtler/browscap4j/Browscap4jDataBean.java
 net/tachtler/browscap4j/Browscap4jFileReader.java
